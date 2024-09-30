@@ -77,11 +77,10 @@ class Plugin extends PuppeteerExtraPlugin {
       this._userDataDir,
       {
         maxRetries: 4
-      },
-      err => {
-        debug(err)
       }
-    )
+    ).catch(err => {
+      debug(err)
+    })
   }
 
   async writeFilesToProfile() {
