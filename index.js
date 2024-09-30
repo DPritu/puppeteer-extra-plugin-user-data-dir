@@ -5,7 +5,7 @@ const fs = require('fs')
 const fse = require('fs-extra')
 const os = require('os')
 const path = require('path')
-const rimraf = require('rimraf')
+const { rimraf } = require('rimraf')
 const debug = require('debug')('puppeteer-extra-plugin:user-data-dir')
 const mkdtempAsync = util.promisify(fs.mkdtemp)
 const { PuppeteerExtraPlugin } = require('puppeteer-extra-plugin')
@@ -76,7 +76,7 @@ class Plugin extends PuppeteerExtraPlugin {
     rimraf(
       this._userDataDir,
       {
-        maxBusyTries: 4
+        maxRetries: 4
       },
       err => {
         debug(err)
